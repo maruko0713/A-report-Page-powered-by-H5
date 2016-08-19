@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test_H5ComponentBase</title>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			background:black;
+		}
+		.iphone {
+			width:320px;
+			height:540px;
+			background:#fff;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-top:-270px;
+			margin-left:-170px;
+		}
+	</style>
+	<script src="js/jQuery.min.js"></script>
+	<script src="js/H5ComponentBase.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentBase.css">
+</head>
+<body>
+	<!-- 用于开发测试 H5ComponentBase 对象 -->
+	<div class="iphone"></div>
+	<script>
+		var cfg = {
+			type:"base",
+			text:"text",
+			width:514,
+			height:306,
+			bg:"img/desc_img.png",
+			css: {
+				opacity:0,
+
+			},
+			animateIn:{bottom:50,opacity:1},
+			animateOut:{bottom:0,opacity:0},
+			center:true
+		}
+		var h5 = new H5ComponentBase("Name",cfg);
+		$(".iphone").append(h5);
+		var leave = true;
+		$("body").click(function() {
+			leave = !leave;
+			$(".h5_component").trigger(leave? "onLeave":"onLoad");
+		})
+	</script>
+</body>
+</html>
