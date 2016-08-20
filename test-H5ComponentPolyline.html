@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test-H5ComponentPolyline</title>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			background:black;
+		}
+		.iphone {
+			width:320px;
+			height:540px;
+			background:#fff;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-top:-270px;
+			margin-left:-160px;
+		}
+	</style>
+	<script src="js/jQuery.min.js"></script>
+	<script src="js/H5ComponentBase.js"></script>
+	<!-- 引入柱状图的资源 -->
+	<script src="js/H5ComponentPolyline.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentBase.css">
+	<link rel="stylesheet" href="css/H5ComponentPolyline.css">
+</head>
+<body>
+	<!-- 用于开发测试 H5ComponentBar 对象 -->
+	<div class="iphone"></div>
+	<script>
+		var cfg = {
+			type:"polyline",
+			text:"",
+			width:530,
+			height:600,
+			// bg:"img/desc_img.png",
+			data:[
+				["JS",.4,"green","#ff7676"],
+				["HTML",.2],
+				["CSS3",.1],
+				["HTML5",.2],
+				["Jquery",.35],
+				["PHP",.05],
+				["AngularJs",.09],
+			],
+			css: {
+				top:100,
+				opacity:1
+			},
+			animateIn:{
+				opacity:1,
+				top:200
+			},
+			animateOut:{
+				opacity:0,
+				top:100
+			},
+			center:true
+		}
+		var h5 = new H5ComponentPolyline("myBar",cfg);
+		$(".iphone").append(h5);
+		var leave = true;
+		$("body").click(function() {
+			leave = !leave;
+			$(".h5_component").trigger(leave? "onLeave":"onLoad");
+		})
+	</script>
+</body>
+</html>

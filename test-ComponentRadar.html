@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test_H5ComponentRadar</title>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			background:black;
+		}
+		.iphone {
+			width:320px;
+			height:540px;
+			background:#fff;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-top:-270px;
+			margin-left:-160px;
+		}
+	</style>
+	<script src="js/jQuery.min.js"></script>
+	<script src="js/H5ComponentBase.js"></script>
+	<!-- 引入雷达图的资源 -->
+	<script src="js/H5ComponentRadar.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentBase.css">
+	<link rel="stylesheet" href="css/H5ComponentRadar.css">
+</head>
+<body>
+	<!-- 用于开发测试 H5ComponentRadar 对象 -->
+	<div class="iphone"></div>
+	<script>
+		var cfg = {
+			type:"radar",
+			text:"",
+			width:400,
+			height:400,
+			// bg:"img/desc_img.png",
+			data:[
+				["JS",.4,"green","#ff7676"],
+				["CSS3",.1],
+				["HTML5",.2],
+				["PHP",.05],
+				["jQuery",.35],
+			],
+			css: {
+				top:100,
+				opacity:0
+			},
+			animateIn:{
+				opacity:1,
+				top:200
+			},
+			animateOut:{
+				opacity:0,
+				top:100
+			},
+			center:true
+		}
+		var h5 = new H5ComponentRadar("myBar",cfg);
+		$(".iphone").append(h5);
+		var leave = true;
+		$("body").click(function() {
+			leave = !leave;
+			$(".h5_component").trigger(leave? "onLeave":"onLoad");
+		})
+	</script>
+</body>
+</html>

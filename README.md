@@ -6,9 +6,9 @@
 其实这个项目就是不断的用css3实现各种散点图柱形图什么图的然后最后用js揉在一起啊哈哈哈哈哈哈哈     
 
 ###技术栈:     
-    HTML5    
-    CSS3
-    jQuery
-    fullPage.js
+-  HTML5    
+-  CSS3
+-  jQuery
+-  fullPage.js
 
 
