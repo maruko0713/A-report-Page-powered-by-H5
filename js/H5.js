@@ -20,6 +20,9 @@ var H5 = function() {
         }
  		this.el.append(page);
  		this.page.push(page);
+ 		if(typeof this.whenAddPage === "function") {
+ 			this.whenAddPage();
+ 		}
         return this;
 	}
 	// 新增一个组件
@@ -39,7 +42,7 @@ var H5 = function() {
 		page.append(component);
 		return this;
 	}
-	this.loader = function() {
+	this.loader = function(firstPage) {
 		this.el.fullpage({
 			onLeave:function( index, nextIndex, direction) {
 					// debugger
@@ -51,6 +54,9 @@ var H5 = function() {
 			}
 		});
 		this.el.show();
+		if(firstPage) {
+			$.fn.fullpage.moveTo(firstPage);
+		}
 	}
 	return this;
 }

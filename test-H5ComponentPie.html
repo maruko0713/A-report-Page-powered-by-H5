@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test_H5ComponentPie</title>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			background:black;
+		}
+		.iphone {
+			width:320px;
+			height:540px;
+			background:#fff;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-top:-270px;
+			margin-left:-160px;
+		}
+	</style>
+	<script src="js/jQuery.min.js"></script>
+	<script src="js/H5ComponentBase.js"></script>
+	<!-- 引入饼图的资源 -->
+	<script src="js/H5ComponentPie.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentBase.css">
+	<link rel="stylesheet" href="css/H5ComponentPie.css">
+</head>
+<body>
+	<!-- 用于开发测试 H5ComponentPie 对象 -->
+	<div class="iphone"></div>
+	<script>
+		var cfg = {
+			type:"pie",
+			text:"",
+			width:400,
+			height:400,
+			// bg:"img/desc_img.png",
+			data:[
+				["JS",.4,"pink","#ff7676"],
+				["CSS3",.2],
+				["HTML5",.05],
+				["PHP",.2],
+				["jQuery",.15],
+			],
+			css: {
+				top:200,
+				// opacity:0
+			},
+			// animateIn:{
+			// 	opacity:1,
+			// 	top:200
+			// },
+			// animateOut:{
+			// 	opacity:0,
+			// 	top:100
+			// },
+			center:true
+		}
+		var h5 = new H5ComponentPie("myPie",cfg);
+		$(".iphone").append(h5);
+		var leave = true;
+		$("body").click(function() {
+			leave = !leave;
+			$(".h5_component").trigger(leave? "onLeave":"onLoad");
+		})
+	</script>
+</body>
+</html>
