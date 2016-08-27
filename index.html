@@ -9,20 +9,11 @@
 	<script src="js/jquery.fullPage.js"></script>
 	<script src="js/H5.js"></script>
 	<link rel="stylesheet" href="css/H5.css">
-
-	<!-- 加载h5资源 -->
-	<script type="text/javascript">
-		var res = ["Base","Bar","Point","Polyline","Radar","Pie"]
-		var html = [];
-		for(s in res) {
-			html.push('<script src="js/H5Component'+res[s]+'.js"><\/script>');
-
-			html.push('<link rel="stylesheet" href="css/H5Component'+res[s]+'.css"');
-		}
-		document.write(html.join(""));
-	</script>
-\	<!-- 页面逻辑的样式 -->
-	<style>
+	<script src="js/H5_loading.js"></script>
+	<link rel="stylesheet" href="css/H5_loading.css">
+	
+	<!-- 页面逻辑的样式 -->
+<style>
 		body {
 			margin:0;
 			padding:0;
@@ -85,6 +76,23 @@
 			}
 		}
 	</style>
+</head>
+<body>
+	<div class="loading">
+		<div class="double-bounce1"></div>
+		<div class="double-bounce2"></div>
+		<div id="rate">0%</div>
+	</div>
+<!-- 加载h5资源 -->
+	<script type="text/javascript">
+		var res = ["Base","Bar","Bar_v","Point","Polyline","Radar","Pie","Ring"];
+		var html = [];
+		for(s in res) {
+			html.push('<script src="js/H5Component'+res[s]+'.js"><\/script>');
+			html.push('<link rel="stylesheet" href="css/H5Component'+res[s]+'.css">');
+		}
+		document.write(html.join(""));
+	</script>	
 	<script>
 		$(function() {
 			var h5 = new H5();
@@ -229,10 +237,387 @@
 			  	},
 			  	animateOut: {
 			  		opacity:0,
-			  		top:0
+			  		bottom:0
 			  	},
 			  	delay:500
 			  })
+			  .addPage()
+			  	    .addComponent("caption",{text:"课程分布方向"})
+			  	    .addComponent("polyline", {
+			  	    	type:"polyline",
+						text:"",
+						width:530,
+						height:600,
+						// bg:"img/desc_img.png",
+						data:[
+							["JS",.4,"green","#ff7676"],
+							["HTML",.2],
+							["CSS3",.1],
+							["HTML5",.2],
+							["Jquery",.35],
+							["PHP",.05],
+							["AngularJs",.09],
+						],
+						css: {
+							top:100,
+							opacity:1
+						},
+						animateIn:{
+							opacity:1,
+							top:200
+						},
+						animateOut:{
+							opacity:0,
+						top:100
+					},
+						center:true
+			  	    })
+			  	    .addComponent("msg",{
+			  	    	text:"前端开发课程占到40%",
+			  	    	css : {
+			  	    		opacity:0,
+			  	    		top:150,
+			  	    		textAlign:"center",
+			  	    		width:"100%",
+			  	    		color:"#ff7676",
+			  	    		position:"absolute"
+			  	    	},
+			  	    	animateIn: {
+			  	    		opacity:1
+			  	    	},
+			  	    	animateOut: {
+			  	    		opacity:0
+			  	    	},
+			  	    })//poly-line
+			  .addPage()
+			  		.addComponent("caption",{text:"移动开发课程资源-pie"})
+			  		.addComponent("Pie",{
+			  			type:"pie",
+						text:"",
+						width:400,
+						height:400,
+						// bg:"img/desc_img.png",
+						data:[
+							["Android",.4,"pink","#ff7676"],
+							["IOS",.2],
+							["Cocos2d-x",.2],
+							["Unity-3D",.2],
+						],
+						css: {
+							top:200,
+							// opacity:0
+			        },
+			// animateIn:{
+			// 	opacity:1,
+			// 	top:200
+			// },
+			// animateOut:{
+			// 	opacity:0,
+			// 	top:100
+			// },
+					center:true
+			  		})
+			  		.addComponent("msg",{
+			  			text:"移动课程android占到40%",
+			  			css: {
+			  				opacity:0,
+			  				bottom:40,
+			  				textAlign:"center",
+			  				width:"100%",
+			  				color:"#ff7676",
+			  				position:"absolute"
+			  			},
+			  			animateIn:{
+			  				opacity:1
+			  			},
+			  			animateOut: {
+			  				opacity:0
+			  			}
+			  		})//pie
+			  .addPage()
+			  		.addComponent("caption",{text:"前端开发课程"})
+			  		.addComponent("bar",{
+			  			type:"bar",
+						text:"",
+						width:530,
+						height:600,
+						// bg:"img/desc_img.png",
+						data:[
+							["Javascript",.4,"green","#ff7676"],
+							["HTML/CSS",.2],
+							["CSS3",.1],
+							["HTML5",.2],
+							["Jquery",.35],
+							["Bootstrap",.05],
+							["AngularJs",.09],
+						],
+						css: {
+							top:200,
+							opacity:0
+						},
+						animateIn:{
+							opacity:1,
+							top:200
+						},
+						animateOut:{
+							opacity:0,
+							top:150
+						},
+						center:true
+			  		})
+			  		.addComponent("msg",{
+			  			text:"前端开发课程javascript占到40%",
+			  			css: {
+			  				opacity:0,
+			  				bottom:40,
+			  				textAlign:"center",
+			  				width:"100%",
+			  				color:"#ff7676",
+			  				position:"absolute"
+			  			},
+			  			animateIn:{
+			  				opacity:1
+			  			},
+			  			animateOut: {
+			  				opacity:0
+			  			}
+			  		}) //bar
+			  .addPage()
+			  		.addComponent("caption",{text:"前端开发课程"})
+			  		.addComponent("bar_v",{
+			  			type:"bar_v",
+						text:"",
+						width:530,
+						height:600,
+						// bg:"img/desc_img.png",
+						data:[
+							["Javascript",.4,"green","#ff7676"],
+							["HTML/CSS",.2],
+							["CSS3",.1],
+							["HTML5",.2],
+						],
+						css: {
+							top:150,
+							opacity:0
+						},
+						animateIn:{
+							opacity:1,
+							bottom:150
+						},
+						animateOut:{
+							opacity:0,
+							bottom:150
+						},
+						center:true
+			  		})
+			  		.addComponent("msg",{
+			  			text:"前端开发课程javascript占到40%",
+			  			css: {
+			  				opacity:0,
+			  				top:150,
+			  				textAlign:"center",
+			  				width:"100%",
+			  				color:"#ff7676",
+			  				position:"absolute"
+			  			},
+			  			animateIn:{
+			  				opacity:1
+			  			},
+			  			animateOut: {
+			  				opacity:0
+			  			}
+			  		})
+			  .addPage()
+			  		.addComponent("caption",{text:"后端开发课程"})
+			  		.addComponent("radar", {
+			  			type:"radar",
+						text:"",
+						width:400,
+						height:400,
+						// bg:"img/desc_img.png",
+						data:[
+							["JS",.4,"green","#ff7676"],
+							["CSS3",.1],
+							["HTML5",.2],
+							["PHP",.05],
+							["jQuery",.35],
+						],
+						css: {
+							top:100,
+							opacity:0
+						},
+						animateIn:{
+							opacity:1,
+							top:200
+						},
+						animateOut:{
+							opacity:0,
+							top:100
+						},
+						center:true
+			  		}) //radar
+			  .addPage()
+			  		.addComponent("caption",{text:"课程报名人数过万"})
+			  		.addComponent("ring-all",{
+			  			type:"ring",
+			  			width:400,
+			  			height:400,
+			  			data: [
+			  				["总课程",.7,"#ff7676"]
+			  			],
+			  			css: {
+			  				top:100,
+			  				opacity:0,
+			  				fontSize:"30px"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  			center:true
+			  		})
+			  		.addComponent("msg",{
+			  			text:"不同课程报名超过一万占比",
+			  			css: {
+			  				opacity:0,
+			  				top:300,
+			  				textAlign:"center",
+			  				width:"100%",
+			  				color:"pink",
+			  				position:"absolute",
+			  			},
+			  			animateIn:{
+			  				opacity:1
+			  			},
+			  			animateOut: {
+			  				opacity:0
+			  			},
+			  			delay:1500
+			  		})
+			  		.addComponent("ring-1",{
+			  			type:"ring",
+			  			width:140,
+			  			height:140,
+			  			data: [
+			  				["前端开发",.7,"darkorange"]
+			  			],
+			  			css: {
+			  				bottom:110,
+			  				opacity:0,
+			  				left:30,
+			  				position:"absolute"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  		})
+			  		.addComponent("ring-2",{
+			  			center:true,
+			  			type:"ring",
+			  			width:140,
+			  			height:140,
+			  			data: [
+			  				["后端",.3,"darkorange"]
+			  			],
+			  			css: {
+			  				bottom:110,
+			  				opacity:0,
+			  				position:"absolute"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  		})
+			  		.addComponent("ring-3",{
+			  			type:"ring",
+			  			width:140,
+			  			height:140,
+			  			data: [
+			  				["移动",.2,"darkorange"]
+			  			],
+			  			css: {
+			  				bottom:110,
+			  				opacity:0,
+			  				right:30,
+			  				position:"absolute"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  		})
+			  		.addComponent("ring-4",{
+			  			type:"ring",
+			  			width:140,
+			  			height:140,
+			  			data: [
+			  				["数据处理",.1,"red"]
+			  			],
+			  			css: {
+			  				bottom:40,
+			  				opacity:0,
+			  				left:70,
+			  				position:"absolute"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  		})
+			  		.addComponent("ring-5",{
+			  			type:"ring",
+			  			width:140,
+			  			height:140,
+			  			data: [
+			  				["图像处理",.1,"black"]
+			  			],
+			  			css: {
+			  				bottom:40,
+			  				opacity:0,
+			  				right:70,
+			  				position:"absolute"
+			  			},
+			  			animateIn: {
+			  				opacity:1,
+			  			},
+			  			animateOut: {
+			  				opacity:0,
+			  			},
+			  		})
+			  		 //环图
+			  .addPage()
+			  		.addComponent("caption",{text:"课程难度分布"})
+			  		.addComponent("point",{
+			  			type:"point",
+						text:"",
+						width:300,
+						height:300,
+						// bg:"img/desc_img.png",
+						data:[
+						    ["中级",.5,"#99c1ff"],
+						    ["初级",.2,"#ffa3a4",0,"-60%"],
+							["高级",.3,"#ff7676","50%","-120%"]
+						],
+						css: {
+							bottom:"20%",
+							opacity:0,
+						},
+						animateIn:{bottom:80,opacity:1},
+						animateOut:{bottom:0,opacity:0},
+						center:true
+			  		}) //环图
 			  .addPage("tail")
 			  	.addComponent("logo",{
 			  		center:true,
@@ -301,11 +686,10 @@
 			  			$.fn.fullpage.moveTo(1);
 			  		}
 			  	})
-			  .loader();
+
+			  .loader(["img/bg_1.png","img/logo.png","img/slogan.png","img/slide_up.png","img/caption.png","img/bg-desc.png","img/footer.png","img/bg_page.png","img/desc_img.png","img/ad-right.png","img/ad-left.png","img/tail_share.png","img/tail_back.png"]);
 		});
-	</script>
-</head>
-<body>
-	
+	</script>	
+
 </body>
 </html>

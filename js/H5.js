@@ -36,6 +36,27 @@ var H5 = function() {
 			case "base":
 				component = new H5ComponentBase(name,cfg);
 				break;
+			case "polyline":
+				component = new H5ComponentPolyline(name,cfg);
+				break;
+			case "pie":
+				component = new H5ComponentPie(name,cfg);
+				break;
+			case "bar":
+				component = new H5ComponentBar(name,cfg);
+				break;
+			case "bar_v":
+				component = new H5ComponentBar_v(name,cfg);
+				break;
+			case "radar":
+				component = new H5ComponentRadar(name,cfg);
+				break;
+			case "ring":
+				component = new H5ComponentRing(name,cfg);
+				break;
+			case "point":
+				component = new H5ComponentPoint(name,cfg);
+				break;
 			default:
 		}
 		var page = this.page.slice(-1)[0];
@@ -58,5 +79,6 @@ var H5 = function() {
 			$.fn.fullpage.moveTo(firstPage);
 		}
 	}
-	return this;
+	this.loader = typeof H5_loading == "function" ? H5_loading:this.loader;
+    return this;
 }

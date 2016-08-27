@@ -41,8 +41,8 @@ var H5ComponentBase = function(name, cfg) {
 	})
 	component.on("onLeave",function() {
 		setTimeout(function(){
-			component.removeClass(cls+"_leave").addClass(cls+"_load");
-			cfg.animateIn && component.animate(cfg.animateIn);
+			component.removeClass(cls+"_load").addClass(cls+"_leave");
+			cfg.animateOut && component.animate(cfg.animateOut);
 		},cfg.delay || 0);
 		return false;
 	})

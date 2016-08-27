@@ -20,5 +20,14 @@ var H5ComponentPoint = function(name, cfg) {
     	component.append(point);
 
     });	
+    
+   component.find('.point').on('click',function(){
+
+        component.find('.point').removeClass('point_focus');
+        $(this).addClass('point_focus');
+
+        return false;
+   }).eq(0).addClass('point_focus')
+
     return component;
 }
